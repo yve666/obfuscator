@@ -1,0 +1,23 @@
+{
+  "name": "larpfuscator",
+  "version": "0.1.0",
+  "description": "Roblox Lua obfuscator CLI",
+  "bin": {
+    "larpfuscator": "src/cli.js"
+  },
+  "main": "src/cli.js",
+  "scripts": {
+    "start": "node src/cli.js",
+    "gui": "node src/cli.js gui",
+    "test": "node test/run.js",
+    "lint": "node -e \"require('./src/cli.js')\" || true"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

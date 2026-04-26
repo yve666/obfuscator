@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>larpfuscator</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">/\</span>
+      <span class="name">larpfuscator</span>
+      <span class="ver" id="ver">…</span>
+    </div>
+    <div class="topbar-right">
+      <a class="link" href="https://github.com/ControlScripts/obfuscated" target="_blank" rel="noopener">github</a>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="pane pane-input">
+      <div class="pane-head">
+        <h2>input</h2>
+        <div class="pane-head-right">
+          <input type="file" id="file" accept=".lua,.luau,.txt" hidden />
+          <button class="btn-ghost" id="btn-load">load file</button>
+          <button class="btn-ghost" id="btn-sample">sample</button>
+          <button class="btn-ghost" id="btn-clear-in">clear</button>
+        </div>
+      </div>
+      <textarea id="src" spellcheck="false" placeholder='-- paste Lua source here, or drop a .lua file&#10;print("Hello, World!")'></textarea>
+      <div class="pane-foot">
+        <span id="src-stats">0 bytes</span>
+      </div>
+    </section>
+
+    <aside class="panel-controls">
+      <div class="ctl-group">
+        <label class="ctl-label">level</label>
+        <div class="seg" role="tablist" id="level-seg">
+          <button class="seg-btn" data-v="0">0</button>
+          <button class="seg-btn" data-v="1">1</button>
+          <button class="seg-btn active" data-v="2">2</button>
+        </div>
+        <div class="ctl-hint" id="level-hint">L2: + dead code + opaque predicates + closure layers.</div>
+      </div>
+
+      <div class="ctl-group">
+        <label class="ctl-label" for="seed">seed</label>
+        <div class="seed-row">
+          <input type="text" id="seed" placeholder="random" inputmode="numeric" autocomplete="off" />
+          <button class="btn-ghost" id="btn-seed-rand" title="randomize">⟲</button>
+        </div>
+        <div class="ctl-hint">deterministic per build. blank = unix time.</div>
+      </div>
+
+      <button id="btn-go" class="btn-primary">obfuscate</button>
+
+      <div class="status" id="status"></div>
+    </aside>
+
+    <section class="pane pane-output">
+      <div class="pane-head">
+        <h2>output</h2>
+        <div class="pane-head-right">
+          <button class="btn-ghost" id="btn-copy" disabled>copy</button>
+          <button class="btn-ghost" id="btn-download" disabled>download</button>
+        </div>
+      </div>
+      <textarea id="out" readonly spellcheck="false" placeholder="// obfuscated output will appear here"></textarea>
+      <div class="pane-foot">
+        <span id="out-stats">—</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
